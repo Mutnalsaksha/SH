@@ -1,0 +1,48 @@
+<!-- Styles for mobile number container -->
+<div class="login-container">
+  <div class="step-container">
+    <div class="step-header">Enter Mobile Number</div>
+    <form id="mobileForm" (ngSubmit)="navigateToOTP()" #mobileForm="ngForm">
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" [(ngModel)]="mobileNumber" #mobileNumberField="ngModel" required pattern="[0-9]{10}">
+      </div>
+      <button type="submit" [disabled]="!mobileForm.valid">Next</button>
+    </form>
+  </div>
+</div>
+
+<!-- Styles for OTP container -->
+<div class="login-container">
+<div class="otp-container" *ngIf="showOTPForm" class="show">
+  <div class="step-container">
+    <div class="step-header">Enter OTP</div>
+    <form id="otpForm" (ngSubmit)="login()" #otpForm="ngForm">
+      <div class="form-group">
+        <label for="otp1">OTP:</label>
+        <div class="otp-inputs">
+          <input type="text" id="otp1" name="otp1" maxlength="1" [(ngModel)]="otp[0]"
+                 (input)="moveToNextInput($event, 1)" required pattern="[0-9]">
+
+          <input type="text" id="otp2" name="otp2" maxlength="1" [(ngModel)]="otp[1]"
+                 (input)="moveToNextInput($event, 2)" required pattern="[0-9]">
+
+          <input type="text" id="otp3" name="otp3" maxlength="1" [(ngModel)]="otp[2]"
+                 (input)="moveToNextInput($event, 3)" required pattern="[0-9]">
+
+          <input type="text" id="otp4" name="otp4" maxlength="1" [(ngModel)]="otp[3]"
+                 (input)="moveToNextInput($event, 4)" required pattern="[0-9]">
+
+          <input type="text" id="otp5" name="otp5" maxlength="1" [(ngModel)]="otp[4]"
+                 (input)="moveToNextInput($event, 5)" required pattern="[0-9]">
+
+          <input type="text" id="otp6" name="otp6" maxlength="1" [(ngModel)]="otp[5]"
+                 (input)="moveToNextInput($event, 6)" required pattern="[0-9]">
+        </div>
+      </div>
+      <br>
+      <button type="submit" [disabled]="!otpForm.valid">Login</button>
+    </form>
+  </div>
+</div>
+</div>
